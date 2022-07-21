@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="XMLConfigTest" strict="true" status="trace">
+    <Properties>
+        <Property name="filename">target/test.log</Property>
+    </Properties>
+    <Appenders>
+        <Appender name="STDOUT" type="Console">
+            <Layout type="PatternLayout" pattern="%m MDC%X%n"/>
+            <Filters>
+                <Filter type="MarkerFilter" onMismatch="NEUTRAL" onMatch="DENY" marker="FLOW"/>
+                <Filter type="MarkerFilter" onMismatch="ACCEPT" onMatch="DENY" marker="EXCEPTION"/>
+            </Filters>
+        </Appender>
+        <Appender name="File" type="File" fileName="${filename}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            </Layout>
+        </Appender>
+    </Appenders>
+    <Loggers>
+        <Logger name="MyApp" additivity="false" level="trace">
+            <AppenderRef ref="File"/>
+        </Logger>
+        <Root level="trace">
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
