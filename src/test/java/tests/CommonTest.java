@@ -1,7 +1,6 @@
 package tests;
 
 import baseEntitie.BaseTest;
-import org.apache.logging.log4j.core.util.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -26,7 +25,6 @@ public class CommonTest extends BaseTest {
         EconomicCalendarPage economicCalendarPage = new EconomicCalendarPage(driver);
 
         commonStep.checkYesterdayDate(economicCalendarPage.getWidgetFieldDateRange(), economicCalendarPage.getWidgetFieldDateRange().getText());
-
         Assertions.assertEquals(economicCalendarPage.getWidgetFieldDateRange().getText(), dateClass.getYesterdayDate(commonStep.gettingCurrentTimeZone()));
 
         commonStep.checkTodayDate(economicCalendarPage.getWidgetFieldDateRange(), economicCalendarPage.getWidgetFieldDateRange().getText());
@@ -45,12 +43,10 @@ public class CommonTest extends BaseTest {
         commonStep.acceptCookie();
 
         commonStep.goToEconomicCalendarPage();
-
-        EconomicCalendarPage economicCalendarPage = new EconomicCalendarPage(driver);
-        commonStep.scrollToElementAndClick(economicCalendarPage.getHereLink());
+        commonStep.clickHereLink();
+        commonStep.clickWarningLink();
 
         RiskWarningPage riskWarningPage = new RiskWarningPage(driver);
-        commonStep.scrollToElementAndClick(riskWarningPage.getRiskWarningLink());
 
         commonStep.switchToWindow();
         Assertions.assertTrue(riskWarningPage.getDocumentWasOpenedInNewTab().isDisplayed());

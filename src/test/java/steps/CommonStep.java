@@ -8,12 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page.EconomicCalendarPage;
 import page.HomePage;
+import page.RiskWarningPage;
 
 import java.util.Set;
 
 public class CommonStep extends BaseStep {
     private EconomicCalendarPage economicCalendarPage;
     private HomePage homePage;
+    private RiskWarningPage riskWarningPage;
 
     public CommonStep(WebDriver driver) {
         super(driver);
@@ -65,6 +67,18 @@ public class CommonStep extends BaseStep {
         scrollToElementAndClick(homePage.getResearchAndEducationField());
         scrollToElementAndClick(homePage.getEconomicCalendarField());
         return economicCalendarPage;
+    }
+
+    public RiskWarningPage clickHereLink(){
+       economicCalendarPage = new EconomicCalendarPage(driver);
+       scrollToElementAndClick(economicCalendarPage.getHereLink());
+       return riskWarningPage;
+    }
+
+    public RiskWarningPage clickWarningLink(){
+        riskWarningPage = new RiskWarningPage(driver);
+       scrollToElementAndClick(riskWarningPage.getRiskWarningLink());
+       return riskWarningPage;
     }
 
     public void goToCalendar() {
