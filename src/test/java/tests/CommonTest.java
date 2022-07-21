@@ -15,7 +15,7 @@ import utils.DateClass;
 public class CommonTest extends BaseTest {
     DateClass dateClass = new DateClass();
 
-//   @Test
+   @Test
     public void checkDateTest() {
         CommonStep commonStep = new CommonStep(driver);
         commonStep.acceptCookie();
@@ -39,7 +39,7 @@ public class CommonTest extends BaseTest {
         Assertions.assertEquals(economicCalendarPage.getWidgetFieldDateRange().getText(), dateClass.getWeekDate(commonStep.gettingCurrentTimeZone()));
     }
 
-//    @Test
+    @Test
     public void getRiskWarningDocumentTest() {
         CommonStep commonStep = new CommonStep(driver);
         commonStep.acceptCookie();
